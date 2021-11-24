@@ -1,4 +1,4 @@
-import style from './JobSignificance.scss'
+import './JobSignificance.scss'
 
 function JobSignificance() {
     return (

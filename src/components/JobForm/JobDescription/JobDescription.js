@@ -1,4 +1,4 @@
-
+import './JobDescription.scss'
 function JobDescription() {
     return ( 
         <>

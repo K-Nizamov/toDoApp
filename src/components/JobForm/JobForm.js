@@ -1,4 +1,4 @@
-import style from './JobForm.scss'
+import './JobForm.scss'
 import JobDescription from './JobDescription/JobDescription';
 import JobSignificance from './JobSignificance/JobSignificance';
 function JobForm() {
