@@ -1,0 +1,18 @@
+
+@use 'index';
+
+.App {
+    display: flex;
+    flex-direction: column;
+    border: solid 
+    3px black;
+    font-family: index.$font-stack;
+    width: 60%;
+}
+#inputField,
+#jobDescription {
+    height: 50px;
+    border: solid 2px rgb(241, 241, 241);
+    border-radius: 5px;
+    box-sizing: border-box;
+}
