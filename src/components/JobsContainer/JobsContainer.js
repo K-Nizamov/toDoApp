@@ -12,7 +12,9 @@ function JobsContainer({ toDos, setToDos }) {
                 <article className="record-container" id="divContainer">
                     {toDos.map(x =>
                         <JobElement
+                            todo = {x}
                             key={x.id}
+                            id = {x.id}
                             toDos={toDos}
                             name={x.job}
                             setToDos={setToDos}

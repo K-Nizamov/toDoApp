@@ -1,13 +1,13 @@
 
 import colorChange from "../../helpers/colorChange";
+import { deleteFunctionHandler } from "../../helpers/deleteHandler";
+
 function JobElement(props) {
     let significanceText = props.significance
 
     let backgroundColorOfLiElement = colorChange(significanceText)
-    
-    const deleteFunction = (e) => {
-   
-    }
+
+    let deleteFunction = () => { deleteFunctionHandler(props) }
 
     return (
         <>
