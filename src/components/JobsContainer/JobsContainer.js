@@ -1,7 +1,7 @@
-import JobElement from './JobElement';
-import './JobsContainer.scss'
+import JobElement from './JobElement'
 
-function JobsContainer() {
+function JobsContainer({ toDos, setToDos }) {
+
     return (
         <>
             <section className="to-do-section">
@@ -10,7 +10,14 @@ function JobsContainer() {
                     <input className="header" id="search" type="text" placeholder="Search Job" />
                 </article>
                 <article className="record-container" id="divContainer">
-            <JobElement/>
+                    {toDos.map(x =>
+                        <JobElement
+                            key={x.id}
+                            toDos={toDos}
+                            name={x.job}
+                            setToDos={setToDos}
+                            significance={x.significance}
+                        />)}
                 </article>
             </section>
         </>

@@ -1,19 +1,87 @@
-
-@use 'index';
-
 .job-form-wrapper-section {
     display: flex;
     flex-direction: column;
-    border: solid 
-    3px black;
-    font-family: index.$font-stack;
+    border: solid 3px black;
+    font-family: Arial, Helvetica, sans-serif;
     width: 60%;
-}
-#inputField,
-#jobDescription {
-    height: 50px;
-    border: solid 2px rgb(241, 241, 241);
-    border-radius: 5px;
-    box-sizing: border-box;
-    color: rgb(139, 138, 138)
+
+    .form-wrapper {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        margin: 40px;
+
+        #inputField,
+        #jobDescription {
+            height: 50px;
+            border: solid 2px rgb(241, 241, 241);
+            border-radius: 5px;
+            box-sizing: border-box;
+            color: rgb(139, 138, 138);
+        }
+
+        #input-field {
+            margin-bottom: 30px;
+        }
+
+        #jobDescription::placeholder{
+            
+        }
+        #jobDescription:invalid {
+            color: rgb(139, 138, 138);
+        }
+
+        #createBtn {
+            margin-top: 20px;
+            width: 10%;
+            color: gray;
+        }
+    }
+    .to-do-section {
+        margin: 40px;
+
+        .record-wrapper {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-between;
+            border-bottom: solid 3px black;
+
+            .header {
+                height: 50px;
+                border-radius: 5px;
+                margin-bottom: 0px;
+                padding-bottom: 0;
+                width: 7em;
+            }
+        }
+        .record-container {
+            display: flex;
+            flex-flow: column wrap;
+            margin-top: 10px;
+
+            .li-wrapper {
+                display: flex;
+                flex-flow: row wrap;
+                background-color: red;
+                max-height: 70px;
+            }
+            
+            .li-style {
+                display: flex;
+                flex-grow: 1;
+                height: 70px;
+                padding-left: 20px;
+                align-items: center;
+                min-width: 30%;
+
+                .record-section-btn {
+                    position: relative;
+                    color: gray;
+                    margin-left: 20px;
+                    width: 25%;
+                    right: 15%;
+                }
+            }
+        }
+    }
 }
