@@ -1,7 +1,7 @@
 import './PopUpScreen.scss'
 import { useEffect, useState } from 'react'
 
-function PopUpScreen({ visibility, setVisibility, currentLi }) {
+function PopUpScreen({ visibility, setVisibility, currentLi,toDos,setToDos}) {
     let priority = currentLi.significance
     let jobName = currentLi.job
 
@@ -10,6 +10,9 @@ function PopUpScreen({ visibility, setVisibility, currentLi }) {
         setVisibility('none')
         let significance = e.target.description.value
         currentLi.significance = significance
+
+        let sortedToDos = toDos.sort((a, b) => b.significance.localeCompare(a.significance))
+        setToDos(sortedToDos)
     }
 
     const [currentSignificance,setCurrentSignificance] = useState('')
@@ -19,6 +22,7 @@ function PopUpScreen({ visibility, setVisibility, currentLi }) {
         setCurrentSignificance(priority)
         setCurrentJobName(jobName)
     },[priority,jobName])
+
 
     function changeHandler(e){
         setCurrentSignificance(e.target.value)

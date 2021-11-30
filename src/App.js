@@ -9,7 +9,7 @@ function App() {
   const [toDos, setToDos] = useState([])
   const [visibility, setVisibility] = useState('')
   const [currentLi, setCurrentLi] = useState('')
-  
+
 
   return (
     <>
@@ -19,10 +19,13 @@ function App() {
           toDos={toDos}
           setToDos={setToDos}
           setVisibility={setVisibility}
+          currentLi={currentLi}
           setCurrentLi={setCurrentLi}
         />
       </div>
       <PopUpScreen
+        toDos={toDos}
+        setToDos={setToDos}
         visibility={visibility}
         setVisibility={setVisibility}
         currentLi={currentLi}

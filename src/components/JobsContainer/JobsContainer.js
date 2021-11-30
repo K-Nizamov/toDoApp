@@ -1,7 +1,13 @@
+import { useEffect, useState } from 'react';
 import JobElement from './JobElement'
 
-function JobsContainer({ toDos, setToDos,setVisibility,setCurrentLi}) {
+function JobsContainer({ toDos, setToDos,setVisibility,currentLi,setCurrentLi}) {
 
+  const [sorted,setSorted] = useState([])
+    useEffect(()=>{
+        let sortedToDos = toDos.sort((a, b) => b.significance.localeCompare(a.significance))
+        setSorted(sortedToDos)
+    },[toDos])
     return (
         <>
             <section className="to-do-section">
@@ -10,7 +16,7 @@ function JobsContainer({ toDos, setToDos,setVisibility,setCurrentLi}) {
                     <input className="header" id="search" type="text" placeholder="Search Job" />
                 </article>
                 <article className="record-container" id="divContainer">
-                    {toDos.map(x =>
+                    {sorted.map(x =>
                         <JobElement
                             todo = {x}
                             key={x.id}
