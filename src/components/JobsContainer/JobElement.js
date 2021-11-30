@@ -1,6 +1,7 @@
 
 import colorChange from "../../helpers/colorChange";
 import { deleteFunctionHandler } from "../../helpers/deleteHandler";
+import {editFuncionality} from "../../helpers/editFuncionality"
 
 function JobElement(props) {
     let significanceText = props.significance
@@ -9,10 +10,8 @@ function JobElement(props) {
 
     let deleteFunction = () => { deleteFunctionHandler(props) }
 
-    function editFunctionHandler(e) {
-        props.setVisibility('block')
-        props.setCurrentLi(props.todo)
-    }
+    let editFunctionHandler = () => {editFuncionality(props)}
+
 
     return (
         <>
