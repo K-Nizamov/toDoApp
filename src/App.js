@@ -7,13 +7,26 @@ import { useState } from 'react';
 
 function App() {
   const [toDos, setToDos] = useState([])
+  const [visibility, setVisibility] = useState('')
+  const [currentLi, setCurrentLi] = useState('')
+  
+
   return (
     <>
       <div className="job-form-wrapper-section">
         <JobForm setToDos={setToDos} toDos={toDos} />
-        <JobsContainer setToDos={setToDos} toDos={toDos} />
-        <PopUpScreen />
+        <JobsContainer
+          toDos={toDos}
+          setToDos={setToDos}
+          setVisibility={setVisibility}
+          setCurrentLi={setCurrentLi}
+        />
       </div>
+      <PopUpScreen
+        visibility={visibility}
+        setVisibility={setVisibility}
+        currentLi={currentLi}
+      />
     </>
   );
 }

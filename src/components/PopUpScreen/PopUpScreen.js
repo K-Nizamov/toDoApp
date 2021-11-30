@@ -1,18 +1,42 @@
 import './PopUpScreen.scss'
+import { useEffect, useState } from 'react'
 
-function PopUpScreen() {
+function PopUpScreen({ visibility, setVisibility, currentLi }) {
+    let priority = currentLi.significance
+    let jobName = currentLi.job
+
+    function updateHandler(e) {
+        e.preventDefault()
+        setVisibility('none')
+        let significance = e.target.description.value
+        currentLi.significance = significance
+    }
+
+    const [currentSignificance,setCurrentSignificance] = useState('')
+    const [currentJobName,setCurrentJobName] = useState('')
+
+    useEffect(()=>{
+        setCurrentSignificance(priority)
+        setCurrentJobName(jobName)
+    },[priority,jobName])
+
+    function changeHandler(e){
+        setCurrentSignificance(e.target.value)
+    }
+
+
     return (
-        <div id="pop-up-screen">
+        <form onSubmit={updateHandler}  id="pop-up-screen" style={{ display: visibility }}>
             <div id="pop-up-content">
-                <h2 id="pop-up-title">My job name</h2>
-                <select required id="pop-up-job-description">
-                    <option defaultValue="Urgent">Urgent</option>
-                    <option defaultValue="Regular">Regular</option>
-                    <option defaultValue="Trivial">Trivial</option>
+                <h2 id="pop-up-title">{currentJobName}</h2>
+                <select name="description" required id="pop-up-job-description" onChange={changeHandler} value = {currentSignificance} >
+                    <option value="Urgent" >Urgent</option>
+                    <option value="Regular">Regular</option>
+                    <option value="Trivial">Trivial</option>
                 </select>
             </div>
-            <button type="submit" id="update-btn">Update</button>
-        </div>
+            <button type="submit" id="update-btn" >Update</button>
+        </form>
     );
 }
 

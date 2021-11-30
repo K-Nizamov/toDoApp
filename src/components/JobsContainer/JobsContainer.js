@@ -1,6 +1,6 @@
 import JobElement from './JobElement'
 
-function JobsContainer({ toDos, setToDos }) {
+function JobsContainer({ toDos, setToDos,setVisibility,setCurrentLi}) {
 
     return (
         <>
@@ -19,6 +19,8 @@ function JobsContainer({ toDos, setToDos }) {
                             name={x.job}
                             setToDos={setToDos}
                             significance={x.significance}
+                            setVisibility = {setVisibility}
+                            setCurrentLi = {setCurrentLi}
                         />)}
                 </article>
             </section>

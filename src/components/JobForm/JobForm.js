@@ -1,11 +1,11 @@
 
-function JobForm({setToDos,toDos}) {
+function JobForm({ setToDos, toDos }) {
 
     function formHandler(e) {
         e.preventDefault()
         let job = e.target['job-title'].value;
         let significance = e.target.description.value
-        setToDos([...toDos,{job,significance,id:Math.ceil(Math.random()*1000)}])
+        setToDos([...toDos, { job, significance, id: Math.ceil(Math.random() * 1000) }])
         e.target['job-title'].value = ""
         e.target.description.value = e.target.description.options[0].textContent
 
@@ -17,10 +17,10 @@ function JobForm({setToDos,toDos}) {
                 <div>Job:</div>
                 <input type="text" id="inputField" name="job-title" placeholder="Job" />
                 <div>Priority:</div>
-                <select required name="description" id="jobDescription" defaultValue ="Urgent ...">
-                    <option defaultValue="Urgent">Urgent</option>
-                    <option defaultValue="Regular">Regular</option>
-                    <option defaultValue="Trivial">Trivial</option>
+                <select required name="description" id="jobDescription">
+                    <option >Urgent</option>
+                    <option >Regular</option>
+                    <option >Trivial</option>
                 </select>
                 <button type="submit" id="createBtn">Create</button>
             </form>
