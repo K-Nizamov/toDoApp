@@ -1,4 +1,4 @@
-export function editFuncionality(props) {
-    props.setVisibility('block')
-    props.setCurrentLi(props.todo)
+export function editFuncionality(context,props) {
+    context.setVisibility('block')
+    context.setCurrentLi(props.todo)
 }

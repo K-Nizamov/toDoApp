@@ -1,11 +1,15 @@
 import './PopUpScreen.scss'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import updateHandle from '../../helpers/updateHandler'
+import ToDoContext from '../../context/ToDoContext'
 
 
-function PopUpScreen({ visibility, setVisibility, currentLi, toDos, setToDos,sorted,setSorted }) {
-    let priority = currentLi.significance
-    let jobName = currentLi.job
+function PopUpScreen() {
+
+    const context = useContext(ToDoContext)
+
+    let priority = context.currentLi.significance
+    let jobName = context.currentLi.job
 
     const [currentSignificance, setCurrentSignificance] = useState('')
     const [currentJobName, setCurrentJobName] = useState('')
@@ -13,7 +17,7 @@ function PopUpScreen({ visibility, setVisibility, currentLi, toDos, setToDos,sor
     const changeHandler =(e) => {setCurrentSignificance(e.target.value)}
 
     const updateHandleFunction = (e) => {
-        updateHandle(e, setVisibility, currentLi, setToDos, toDos,setSorted)
+        updateHandle(e, context.setVisibility, context.currentLi, context.toDos,context.setSorted)
     }
 
     useEffect(() => {
@@ -22,7 +26,7 @@ function PopUpScreen({ visibility, setVisibility, currentLi, toDos, setToDos,sor
     }, [priority, jobName])
 
     return (
-        <form onSubmit={updateHandleFunction} id="pop-up-screen" style={{ display: visibility }}>
+        <form onSubmit={updateHandleFunction} id="pop-up-screen" style={{ display: context.visibility }}>
             <div id="pop-up-content">
                 <h2 id="pop-up-title">{currentJobName}</h2>
                 <select name="description" required id="pop-up-job-description" onChange={changeHandler} value={currentSignificance} >

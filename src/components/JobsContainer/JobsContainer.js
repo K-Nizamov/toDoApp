@@ -1,22 +1,25 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import ToDoContext from '../../context/ToDoContext';
 
 import searchFunction from '../../helpers/searchHandler';
 import JobElement from './JobElement'
 
 
-function JobsContainer({ toDos, setToDos, setVisibility, setCurrentLi, sorted, setSorted }) {
+function JobsContainer() {
+
+    const context = useContext(ToDoContext)
 
     const [filteredText, setFilteredText] = useState('')
 
     const searchHandleFunction = (e) => {
-        searchFunction(e, setFilteredText)
+        searchFunction(e,setFilteredText)
     }
 
     useEffect(() => {
-        let filteredArr = toDos.filter(obj => obj.job.toUpperCase().includes(filteredText.toUpperCase()))
+        let filteredArr = context.toDos.filter(obj => obj.job.toUpperCase().includes(filteredText.toUpperCase()))
         let sortedToDos = filteredArr.sort((a, b) => b.significance.localeCompare(a.significance))
-        setSorted(sortedToDos)
-    }, [toDos, filteredText, setSorted])
+        context.setSorted(sortedToDos)
+    }, [context.toDos, filteredText, context.setSorted])
 
     return (
         <>
@@ -26,17 +29,13 @@ function JobsContainer({ toDos, setToDos, setVisibility, setCurrentLi, sorted, s
                     <input className="header" id="search" type="text" onKeyUp={searchHandleFunction} placeholder="Search Job" />
                 </article>
                 <article className="record-container" id="divContainer">
-                    {sorted.map(x =>
+                    {context.sorted.map(x =>
                         <JobElement
                             todo={x}
                             key={x.id}
                             id={x.id}
-                            toDos={toDos}
                             name={x.job}
-                            setToDos={setToDos}
                             significance={x.significance}
-                            setVisibility={setVisibility}
-                            setCurrentLi={setCurrentLi}
                         />)}
                 </article>
             </section>

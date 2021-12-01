@@ -1,4 +1,4 @@
-export default function updateHandle(e,setVisibility,currentLi,setToDos,toDos,setSorted) {
+export default function updateHandle(e,setVisibility,currentLi,toDos,setSorted) {
     e.preventDefault()
     setVisibility('none')
     let significance = e.target.description.value

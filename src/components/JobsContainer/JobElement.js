@@ -1,16 +1,21 @@
 
+import { useContext } from "react";
+import ToDoContext from "../../context/ToDoContext";
 import colorChange from "../../helpers/colorChange";
 import { deleteFunctionHandler } from "../../helpers/deleteHandler";
 import { editFuncionality } from "../../helpers/editFuncionality"
 
 function JobElement(props) {
+
+    const context = useContext(ToDoContext)
+
     let significanceText = props.significance
 
     let backgroundColorOfLiElement = colorChange(significanceText)
 
-    let deleteFunction = () => { deleteFunctionHandler(props) }
+    let deleteFunction = () => { deleteFunctionHandler(context,props) }
 
-    let editFunctionHandler = () => { editFuncionality(props) }
+    let editFunctionHandler = () => { editFuncionality(context,props) }
 
     return (
         <>

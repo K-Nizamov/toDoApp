@@ -1,3 +1,3 @@
-export const deleteFunctionHandler = (props) => {
-    props.setToDos(props.toDos.filter((el) => el.id !== props.todo.id ))
+export const deleteFunctionHandler = (context,props) => {
+    context.setToDos(context.toDos.filter((el) => el.id !== props.todo.id ))
 }

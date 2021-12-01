@@ -1,9 +1,12 @@
+import { useContext } from "react";
+
 import formHandler from "../../helpers/formHandler";
+import ToDoContext from "../../context/ToDoContext";
 
-function JobForm({ setToDos, toDos }) {
-
+function JobForm() {
+    const context = useContext(ToDoContext)
     const formHandleFunction = (e) => {
-        formHandler(e, setToDos, toDos)
+        formHandler(e, context.setToDos, context.toDos)
     }
 
     return (

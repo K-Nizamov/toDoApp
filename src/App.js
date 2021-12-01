@@ -4,6 +4,7 @@ import PopUpScreen from './components/PopUpScreen/PopUpScreen';
 import JobForm from './components/JobForm/JobForm'
 import JobsContainer from './components/JobsContainer/JobsContainer'
 import { useState } from 'react';
+import ToDoContext from './context/ToDoContext';
 
 function App() {
   const [toDos, setToDos] = useState([])
@@ -11,30 +12,15 @@ function App() {
   const [currentLi, setCurrentLi] = useState('')
   const [sorted, setSorted] = useState([])
 
-
   return (
     <>
+    <ToDoContext.Provider value = {{toDos,setToDos,visibility,setVisibility,currentLi,setCurrentLi,sorted,setSorted}} >
       <div className="job-form-wrapper-section">
-        <JobForm setToDos={setToDos} toDos={toDos} />
-        <JobsContainer
-          toDos={toDos}
-          setToDos={setToDos}
-          setVisibility={setVisibility}
-          currentLi={currentLi}
-          setCurrentLi={setCurrentLi}
-          sorted = {sorted}
-          setSorted={setSorted}
-        />
+        <JobForm/>
+        <JobsContainer/>
       </div>
-      <PopUpScreen
-        toDos={toDos}
-        setToDos={setToDos}
-        visibility={visibility}
-        setVisibility={setVisibility}
-        currentLi={currentLi}
-        sorted = {sorted}
-        setSorted={setSorted}
-      />
+      <PopUpScreen/>
+    </ToDoContext.Provider>
     </>
   );
 }
