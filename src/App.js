@@ -9,6 +9,7 @@ function App() {
   const [toDos, setToDos] = useState([])
   const [visibility, setVisibility] = useState('')
   const [currentLi, setCurrentLi] = useState('')
+  const [sorted, setSorted] = useState([])
 
 
   return (
@@ -21,6 +22,8 @@ function App() {
           setVisibility={setVisibility}
           currentLi={currentLi}
           setCurrentLi={setCurrentLi}
+          sorted = {sorted}
+          setSorted={setSorted}
         />
       </div>
       <PopUpScreen
@@ -29,6 +32,8 @@ function App() {
         visibility={visibility}
         setVisibility={setVisibility}
         currentLi={currentLi}
+        sorted = {sorted}
+        setSorted={setSorted}
       />
     </>
   );

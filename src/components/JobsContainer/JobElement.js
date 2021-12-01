@@ -1,7 +1,7 @@
 
 import colorChange from "../../helpers/colorChange";
 import { deleteFunctionHandler } from "../../helpers/deleteHandler";
-import {editFuncionality} from "../../helpers/editFuncionality"
+import { editFuncionality } from "../../helpers/editFuncionality"
 
 function JobElement(props) {
     let significanceText = props.significance
@@ -10,8 +10,7 @@ function JobElement(props) {
 
     let deleteFunction = () => { deleteFunctionHandler(props) }
 
-    let editFunctionHandler = () => {editFuncionality(props)}
-
+    let editFunctionHandler = () => { editFuncionality(props) }
 
     return (
         <>

@@ -1,29 +1,29 @@
 import { useEffect, useState } from 'react';
+
+import searchFunction from '../../helpers/searchHandler';
 import JobElement from './JobElement'
 
-function JobsContainer({ toDos, setToDos, setVisibility, setCurrentLi }) {
+
+function JobsContainer({ toDos, setToDos, setVisibility, setCurrentLi, sorted, setSorted }) {
 
     const [filteredText, setFilteredText] = useState('')
-  
-    function searchFunction(e) {
-        e.preventDefault()
-        let filterText = e.target.value
-        setFilteredText(filterText)
+
+    const searchHandleFunction = (e) => {
+        searchFunction(e, setFilteredText)
     }
 
-    const [sorted, setSorted] = useState([])
     useEffect(() => {
         let filteredArr = toDos.filter(obj => obj.job.toUpperCase().includes(filteredText.toUpperCase()))
         let sortedToDos = filteredArr.sort((a, b) => b.significance.localeCompare(a.significance))
         setSorted(sortedToDos)
-    }, [toDos,filteredText])
+    }, [toDos, filteredText, setSorted])
 
     return (
         <>
             <section className="to-do-section">
                 <article className="record-wrapper">
                     <h1 className="header">JOB LIST</h1>
-                    <input className="header" id="search" type="text" onKeyUp={searchFunction} placeholder="Search Job" />
+                    <input className="header" id="search" type="text" onKeyUp={searchHandleFunction} placeholder="Search Job" />
                 </article>
                 <article className="record-container" id="divContainer">
                     {sorted.map(x =>

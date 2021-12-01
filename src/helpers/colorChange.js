@@ -1,6 +1,6 @@
 
 export default function colorChange(text,color) {
-    switch (text ){
+    switch (text){
         case 'Regular':
             color = { background: 'yellow' }
             break;

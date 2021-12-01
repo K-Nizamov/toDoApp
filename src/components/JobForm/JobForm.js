@@ -1,24 +1,14 @@
+import formHandler from "../../helpers/formHandler";
 
 function JobForm({ setToDos, toDos }) {
 
-    function formHandler(e) {
-        e.preventDefault()
-        let job = e.target['job-title'].value;
-        let significance = e.target.description.value
-
-        let pattern = /^[a-zA-Z\d ]+$/
-
-        if(job === "" || job.length >= 70 || !job.match(pattern)){
-            return;
-        }
-        setToDos([...toDos, { job, significance, id: Math.ceil(Math.random() * 1000) }])
-        e.target['job-title'].value = ""
-        e.target.description.value = e.target.description.options[0].textContent
+    const formHandleFunction = (e) => {
+        formHandler(e, setToDos, toDos)
     }
 
     return (
         <section className="form-section">
-            <form className="form-wrapper" onSubmit={formHandler}>
+            <form className="form-wrapper" onSubmit={formHandleFunction}>
                 <div>Job:</div>
                 <input type="text" id="inputField" name="job-title" placeholder="Job" />
                 <div>Priority:</div>
