@@ -1,30 +1,19 @@
-
 import { useContext } from "react";
-import ToDoContext from "../../context/ToDoContext";
+import { GlobalContext } from "../../context/GloblaState";
 import colorChange from "../../helpers/colorChange";
-import { deleteFunctionHandler } from "../../helpers/deleteHandler";
-import { editFuncionality } from "../../helpers/editFuncionality"
 
-function JobElement(props) {
-
-    const context = useContext(ToDoContext)
-
-    let significanceText = props.significance
-
-    let backgroundColorOfLiElement = colorChange(significanceText)
-
-    let deleteFunction = () => { deleteFunctionHandler(context,props) }
-
-    let editFunctionHandler = () => { editFuncionality(context,props) }
+function JobElement({ todo }) {
+    const { deleteTodo, showScreen} = useContext(GlobalContext)
+    let color = colorChange(todo.significance)
 
     return (
         <>
-            <div className="li-wrapper" style={backgroundColorOfLiElement}>
-                <li className="li-style">{props.name}</li>
-                <li className="li-style">{props.significance}</li>
+            <div className="li-wrapper" style={color}>
+                <li className="li-style">{todo.job}</li>
+                <li className="li-style">{todo.significance}</li>
                 <li className="li-style">
-                    <button className="record-section-btn" onClick={editFunctionHandler}>Edit</button>
-                    <button className="record-section-btn" onClick={deleteFunction}>Delete</button>
+                    <button className="record-section-btn" onClick={() => showScreen(todo)} >Edit</button>
+                    <button className="record-section-btn" onClick={() => deleteTodo(todo)} >Delete</button>
                 </li>
             </div>
         </>

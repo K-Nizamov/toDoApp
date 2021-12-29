@@ -1,34 +1,39 @@
+import { useEffect, useState } from 'react';
+import { useContext } from 'react';
+import { GlobalContext } from '../../context/GloblaState';
 import './PopUpScreen.scss'
-import { useContext, useEffect, useState } from 'react'
-import updateHandle from '../../helpers/updateHandler'
-import ToDoContext from '../../context/ToDoContext'
-
 
 function PopUpScreen() {
+    const { visible, currentTodo, todos, updateCurrentTodo } = useContext(GlobalContext)
 
-    const context = useContext(ToDoContext)
-
-    let priority = context.currentLi.significance
-    let jobName = context.currentLi.job
+    let jobName = currentTodo.job
+    let priority = currentTodo.significance
 
     const [currentSignificance, setCurrentSignificance] = useState('')
-    const [currentJobName, setCurrentJobName] = useState('')
-
-    const changeHandler =(e) => {setCurrentSignificance(e.target.value)}
-
-    const updateHandleFunction = (e) => {
-        updateHandle(e, context.setVisibility, context.currentLi, context.toDos,context.setSorted)
-    }
 
     useEffect(() => {
         setCurrentSignificance(priority)
-        setCurrentJobName(jobName)
-    }, [priority, jobName])
+    }, [priority])
+
+    const changeHandler = (e) => {
+        setCurrentSignificance(e.target.value)
+    }
+
+    const updateHandleFunction = (e) => {
+
+        e.preventDefault()
+
+        let significance = e.target.description.value
+
+        updateCurrentTodo(currentTodo, significance)
+
+        todos.sort((a, b) => b.significance.localeCompare(a.significance))
+    }
 
     return (
-        <form onSubmit={updateHandleFunction} id="pop-up-screen" style={{ display: context.visibility }}>
+        <form id="pop-up-screen" onSubmit={updateHandleFunction} style={{ display: visible }}>
             <div id="pop-up-content">
-                <h2 id="pop-up-title">{currentJobName}</h2>
+                <h2 id="pop-up-title">{jobName}</h2>
                 <select name="description" required id="pop-up-job-description" onChange={changeHandler} value={currentSignificance} >
                     <option value="Urgent" >Urgent</option>
                     <option value="Regular">Regular</option>

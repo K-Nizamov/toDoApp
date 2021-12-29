@@ -1,21 +1,48 @@
 import { useContext } from "react";
 
-import formHandler from "../../helpers/formHandler";
-import ToDoContext from "../../context/ToDoContext";
+import { GlobalContext } from "../../context/GloblaState";
+import { useState } from "react";
 
 function JobForm() {
-    const context = useContext(ToDoContext)
+
+    const { addTodo } = useContext(GlobalContext)
+    
+    const [job, setJob] = useState('')
+    const [significance, setSignificance] = useState('Urgent')
+
+
     const formHandleFunction = (e) => {
-        formHandler(e, context.setToDos, context.toDos)
+        e.preventDefault()
+        setJob(e.target['job-title'].value)
+        setSignificance(e.target.description.value)
+
+        let pattern = /^[a-zA-Z\d ]+$/
+
+        if (job === "" || job.length >= 70 || !job.match(pattern)) {
+            setJob('')
+            setSignificance('Urgent')
+            alert('The input cannot be empty string, chars >= 70 or other chars than Latin')
+            return;
+        }
+
+        const newTodo = {
+            id: Math.floor(Math.random() * 100000000),
+            job,
+            significance
+        }
+
+        addTodo(newTodo)
+        setJob('')
+        setSignificance('Urgent')
     }
 
     return (
         <section className="form-section">
             <form className="form-wrapper" onSubmit={formHandleFunction}>
                 <div>Job:</div>
-                <input type="text" id="inputField" name="job-title" placeholder="Job" />
+                <input type="text" id="inputField" value={job} name="job-title" placeholder="Job" onChange={(e) => setJob(e.target.value)} />
                 <div>Priority:</div>
-                <select required name="description" id="jobDescription">
+                <select required name="description" value={significance} id="jobDescription" onChange={(e) => setSignificance(e.target.value)}>
                     <option >Urgent</option>
                     <option >Regular</option>
                     <option >Trivial</option>

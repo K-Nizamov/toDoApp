@@ -1,5 +1,5 @@
-
-export default function colorChange(text,color) {
+export default function colorChange(text) {
+    let color;
     switch (text){
         case 'Regular':
             color = { background: 'yellow' }
