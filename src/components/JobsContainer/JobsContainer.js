@@ -6,7 +6,7 @@ import { GlobalContext } from '../../context/GloblaState';
 import JobElement from './JobElement'
 
 function JobsContainer() {
-    const { todos, filteredTodos, searchTodo, currentTodo } = useContext(GlobalContext)
+    const { todos, filteredTodos, searchTodo} = useContext(GlobalContext)
     const [filterText, setFilterText] = useState("")
 
     const searchHandle = (e) => {
@@ -15,7 +15,7 @@ function JobsContainer() {
     }
     useEffect(()=>{
         searchTodo(filterText)
-    },[filterText])
+    },[filterText,])
 
     return (
         <>
