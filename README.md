@@ -1,4 +1,4 @@
-ToDo list app using ReactJS
+ToDo list app using ReactJS ( using CONTEXT API(build in React) for state managment. The state is managed by useReducer hook instead of useState hook, which is more like Redux.
 
 # Getting Started with Create React App
 
