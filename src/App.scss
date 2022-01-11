@@ -1,85 +1,279 @@
-.job-form-wrapper-section {
-    display: flex;
-    flex-direction: column;
-    border: solid 3px black;
-    font-family: Arial, Helvetica, sans-serif;
-    width: 60%;
 
-    .form-wrapper {
-        position: relative;
+// PHONE DESIGN
+
+@media screen {
+    .job-form-wrapper-section {
         display: flex;
-        flex-direction: column;
-        margin: 40px;
+        flex-flow: column wrap;
+        border: solid 3px black;
+        font-family: Arial, Helvetica, sans-serif;
 
-        #inputField,
-        #jobDescription {
-            height: 50px;
-            border: solid 2px rgb(241, 241, 241);
-            border-radius: 5px;
-            box-sizing: border-box;
-            color: rgb(139, 138, 138);
-        }
-
-        #input-field {
-            margin-bottom: 30px;
-        }
-
-        #jobDescription::placeholder{
-            
-        }
-        #jobDescription:invalid {
-            color: rgb(139, 138, 138);
-        }
-
-        #createBtn {
-            margin-top: 20px;
-            width: 10%;
-            color: gray;
-        }
-    }
-    .to-do-section {
-        margin: 40px;
-
-        .record-wrapper {
-            display: flex;
-            flex-flow: row wrap;
-            justify-content: space-between;
-            border-bottom: solid 3px black;
-
-            .header {
-                height: 50px;
-                border-radius: 5px;
-                margin-bottom: 0px;
-                padding-bottom: 0;
-                width: 7em;
-            }
-        }
-        .record-container {
+        .form-wrapper {
             display: flex;
             flex-flow: column wrap;
-            margin-top: 10px;
+            margin: 40px;
 
-            .li-wrapper {
+            #inputField,
+            #jobDescription {
+                height: 50px;
+                border: solid 2px rgb(241, 241, 241);
+                border-radius: 5px;
+                box-sizing: border-box;
+                color: rgb(139, 138, 138);
+            }
+            #inputField {
+                margin-bottom: 30px;
+            }
+            #createBtn {
+                align-self: center;
+                width: 50%;
+                margin-top: 20px;
+                color: grey;
+            }
+        }
+        .to-do-section {
+            margin: 40px;
+
+            .record-wrapper {
+                display: flex;
+                justify-content: space-between;
+                border-bottom: solid 3px black;
+
+                .header {
+                    text-align: center;
+                    height: 40px;
+                    border-radius: 5px;
+                    margin-bottom: 0px;
+                    width: 6em;
+                }
+            }
+            .record-container {
+                display: flex;
+                flex-flow: column wrap;
+                margin-top: 10px;
+
+                .li-wrapper {
+                    display: flex;
+                    flex-flow: column wrap;
+
+                    li:nth-child(3) {
+                        display: flex;
+                        flex-flow: row wrap;
+                        width: 100%;
+                        justify-content: space-around;
+                        color: gray;
+                        margin: 0px;
+                        width: 85%;
+                        // right: 15%;
+                    }
+                    li:nth-child(1),
+                    li:nth-child(2) {
+                        text-align: center;
+                        padding: 0;
+                        margin: 0;
+                    }
+                    .li-style {
+                        display: flex;
+                        flex-flow: column;
+                        justify-content: center;
+                        height: 30px;
+                        padding-left: 20px;
+                        align-items: center;
+                        min-width: 40%;
+                        margin-top: 20px;
+
+                        button {
+                            width: 30%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+// TABLET DESIGN
+
+@media screen and (min-width: 640px) {
+    .job-form-wrapper-section {
+        display: flex;
+        flex-flow: column wrap;
+        border: solid 3px black;
+        font-family: Arial, Helvetica, sans-serif;
+
+        .form-wrapper {
+            display: flex;
+            flex-flow: column wrap;
+            margin: 40px;
+
+            #inputField,
+            #jobDescription {
+                height: 50px;
+                border: solid 2px rgb(241, 241, 241);
+                border-radius: 5px;
+                box-sizing: border-box;
+                color: rgb(139, 138, 138);
+            }
+            #inputField {
+                margin-bottom: 30px;
+            }
+            #createBtn {
+                align-self: flex-start;
+                width: 20%;
+                margin-top: 20px;
+                color: grey;
+            }
+        }
+        .to-do-section {
+            margin: 40px;
+
+            .record-wrapper {
+                display: flex;
+                justify-content: space-between;
+                border-bottom: solid 3px black;
+
+                .header {
+                    text-align: center;
+                    height: 40px;
+                    border-radius: 5px;
+                    margin-bottom: 0px;
+                    width: 6em;
+                }
+            }
+            .record-container {
+                display: flex;
+                flex-flow: column wrap;
+                margin-top: 10px;
+
+                .li-wrapper {
+                    display: flex;
+                    flex-flow: column wrap;
+
+                    li:nth-child(3) {
+                        display: flex;
+                        flex-flow: row wrap;
+                        width: 100%;
+                        justify-content: space-around;
+                        color: gray;
+                        margin-left: 30px;
+                        width: 85%;
+
+                    }
+                    li:nth-child(1),
+                    li:nth-child(2) {
+                        text-align: center;
+                        padding: 0;
+                        margin: 0;
+                    }
+                    .li-style {
+                        display: flex;
+                        flex-flow: column;
+                        justify-content: center;
+                        height: 30px;
+                        padding-left: 20px;
+                        align-items: center;
+                        min-width: 40%;
+                        margin-top: 20px;
+
+                        button {
+                            width: 30%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+// DESIGN FOR LARGER DEVICES
+
+@media screen and (min-width: 1025px) {
+    .job-form-wrapper-section {
+        display: flex;
+        flex-direction: column;
+        border: solid 3px black;
+        font-family: Arial, Helvetica, sans-serif;
+        width: 60%;
+
+        .form-wrapper {
+            display: flex;
+            flex-direction: column;
+            margin: 40px;
+
+            #inputField,
+            #jobDescription {
+                height: 50px;
+                border: solid 2px rgb(241, 241, 241);
+                border-radius: 5px;
+                box-sizing: border-box;
+                color: rgb(139, 138, 138);
+            }
+
+            #inputField {
+                margin-bottom: 30px;
+            }
+            #createBtn {
+                align-self: flex-start;
+                margin-top: 20px;
+                width: 15%;
+                color: gray;
+            }
+        }
+        .to-do-section {
+            margin: 40px;
+
+            .record-wrapper {
                 display: flex;
                 flex-flow: row wrap;
-                background-color: red;
-                max-height: 70px;
-            }
-            
-            .li-style {
-                display: flex;
-                flex-grow: 1;
-                height: 70px;
-                padding-left: 20px;
-                align-items: center;
-                min-width: 30%;
+                justify-content: space-between;
+                border-bottom: solid 3px black;
 
-                .record-section-btn {
-                    position: relative;
-                    color: gray;
-                    margin-left: 20px;
-                    width: 25%;
-                    right: 15%;
+                .header {
+                    height: 50px;
+                    border-radius: 5px;
+                    margin-bottom: 0px;
+                    padding-bottom: 0;
+                    width: 7em;
+                }
+            }
+            .record-container {
+                display: flex;
+                flex-flow: column wrap;
+                margin-top: 10px;
+
+                .li-wrapper {
+                    display: flex;
+                    max-height: 70px;
+                    li:nth-child(3) {
+                        display: flex;
+                        flex-flow: row wrap;
+                        width: 100%;
+                        justify-content: space-around;
+                        color: gray;
+                        margin: 0px;
+                        padding: 0;
+                        width: 20%;
+                    }
+                    li:nth-child(1),
+                    li:nth-child(2) {
+                        width: 15px;
+                        padding: 0;
+                        margin: 0;
+                    }
+
+                    .li-style {
+                        height: 70px;
+                        min-width: 30%;
+
+                        .record-section-btn {
+                            color: gray;
+                            width: 25%;
+                        }
+                    }
                 }
             }
         }

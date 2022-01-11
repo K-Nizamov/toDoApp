@@ -15,7 +15,7 @@ function JobsContainer() {
     }
     useEffect(()=>{
         searchTodo(filterText)
-    },[filterText,])
+    },[filterText])
 
     return (
         <>
